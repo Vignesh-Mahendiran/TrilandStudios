@@ -6,7 +6,8 @@ export const BannerContainer = styled("div")({
   ".banner": {
     maxWidth: 700,
     width: "90%",
-    margin: "20vh auto",
+    margin: "0 auto",
+    paddingBlock: "20vh",
     textAlign: "center",
     p: { color: "#d7f8f3", fontSize: "1.2rem", lineHeight: 1.5 },
     button: {
@@ -26,7 +27,7 @@ export const BannerContainer = styled("div")({
   "@media screen and (max-width: 768px)": {
     height: "100%",
     ".banner": {
-      margin: "80px auto !important",
+      paddingBlock: "80px !important",
       maxWidth: 500,
       p: { fontSize: "1rem" },
     },
@@ -39,9 +40,7 @@ export const BannerContainer = styled("div")({
 });
 
 export const Navcontainer = styled("div")({
-  display: "flex",
-  justifyContent: "space-between",
-  alignItems: "center",
+  background: "radial-gradient(50% 100% at 49.1% 100%,rgba(0,222,188,.15) 0%,rgba(12,23,22,0) 100%)",
   ".menus": {
     display: "none",
   },

@@ -7,7 +7,7 @@ import PhoneIcon from "@mui/icons-material/Phone";
 import SocialMedia from "./SocialMedia";
 const Footer = () => {
   return (
-    <FooterContainer className="wrapper">
+    <FooterContainer className="wrapper" id="contact">
       <div className="logo">
         <img src={triland} alt="trilandStudios" />
       </div>

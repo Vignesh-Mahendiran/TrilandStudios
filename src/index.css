@@ -3,6 +3,9 @@
 * {
   margin: 0;
 }
+html {
+  scroll-behavior: smooth;
+}
 body {
   color: #fff;
   background: #0d1817;
