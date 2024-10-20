@@ -3,7 +3,7 @@ import { ContentContainer } from "../styles/home";
 import { menuCards } from "../constant/home";
 const OurWork = () => {
   return (
-    <ContentContainer className="wrapper" id={"ourServices"}>
+    <ContentContainer className="wrapper ourServices" id={"ourServices"}>
       <h1>
         Our <span className="colored">Services</span>
       </h1>
@@ -16,7 +16,7 @@ const OurWork = () => {
       </p>
       <div className="youtube">
         <iframe
-          src="https://www.youtube.com/embed/Z7NrYwl0F5k?si=kfcVQ2yt4bdl_oDR"
+          src="https://www.youtube.com/embed/Z7NrYwl0F5k?si=kfcVQ2yt4bdl_oDR?rel=0&showinfo=0&controls=0"
           title="YouTube video player"
           frameborder="0"
           allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
@@ -29,7 +29,7 @@ const OurWork = () => {
       </p>
       <div className="youtube">
         <iframe
-          src="https://www.youtube.com/embed/P22d1CYWpLQ?si=HAp_W479a9ZHXtjX"
+          src="https://www.youtube.com/embed/P22d1CYWpLQ?si=HAp_W479a9ZHXtjX?rel=0&showinfo=0&controls=0"
           title="YouTube video player"
           frameborder="0"
           allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
@@ -46,7 +46,7 @@ const OurWork = () => {
       </p>
       <div className="youtube">
         <iframe
-          src="https://www.youtube.com/embed/qvBwd6jZHb0?si=qzCiYvB3wDRS1n2i"
+          src="https://www.youtube.com/embed/qvBwd6jZHb0?si=qzCiYvB3wDRS1n2i?rel=0&showinfo=0&controls=0"
           title="YouTube video player"
           frameborder="0"
           allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
@@ -63,7 +63,7 @@ const OurWork = () => {
       </p>
       <div className="youtube">
         <iframe
-          src="https://www.youtube.com/embed/Fhk_cLkiJWA?si=U1xwC9sVswJGy_gr"
+          src="https://www.youtube.com/embed/Fhk_cLkiJWA?si=U1xwC9sVswJGy_gr?rel=0&showinfo=0&controls=0"
           title="YouTube video player"
           frameborder="0"
           allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
@@ -76,7 +76,7 @@ const OurWork = () => {
       </h1>
       <div className="youtube">
         <iframe
-          src="https://www.youtube.com/embed/ZgpTaSyLvhQ?si=RxftJekybsCnNYjL"
+          src="https://www.youtube.com/embed/ZgpTaSyLvhQ?si=RxftJekybsCnNYjL?rel=0&showinfo=0&controls=0"
           title="YouTube video player"
           frameborder="0"
           allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"

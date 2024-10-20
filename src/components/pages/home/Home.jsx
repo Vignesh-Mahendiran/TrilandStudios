@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import Navbar from "../../module/Navbar";
 import { BannerContainer } from "../../styles/home";
 import ParticleCanvas from "../../shared/ParticleCanvas";
@@ -8,15 +8,15 @@ import Footer from "../../module/Footer";
 
 const Home = () => {
   return (
-    <>
+    <div id="home">
+      <Navbar />
       <BannerContainer>
-        <Navbar />
         <Banner />
       </BannerContainer>
       <OurWork />
       <Footer />
       <ParticleCanvas />
-    </>
+    </div>
   );
 };
 

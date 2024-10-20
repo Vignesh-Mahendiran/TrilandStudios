@@ -8,5 +8,5 @@ export const navItems = [
   { name: "Home", id: "home" },
   { name: "Our Services", id: "ourServices" },
   { name: "Career", id: "" },
-  { name: "Contact", id: "" },
+  { name: "Contact", id: "contact" },
 ];
