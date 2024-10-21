@@ -3,6 +3,7 @@ import { Drawer, keyframes, styled } from "@mui/material";
 
 export const BannerContainer = styled("div")({
   height: "82vh",
+
   ".banner": {
     maxWidth: 700,
     width: "90%",
@@ -19,10 +20,15 @@ export const BannerContainer = styled("div")({
       borderRadius: 40,
       fontWeight: 900,
       cursor: "pointer",
+      transition: "all 0.5s",
       background: "transparent",
     },
+    "button:hover": {
+      background: "#00debc",
+      color: "#0d1817",
+    },
   },
-  h1: { fontSize: "3.2rem", marginBottom: 20 },
+  h1: { fontSize: "3.2rem", fontFamily: "Roboto Condensed", marginBottom: 20 },
 
   "@media screen and (max-width: 768px)": {
     height: "100%",

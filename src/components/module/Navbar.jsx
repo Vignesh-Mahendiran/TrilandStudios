@@ -7,35 +7,9 @@ import { navItems } from "../constant/home";
 const Navbar = () => {
   const [open, setOpen] = useState(false);
 
-  const [isSticky, setIsSticky] = useState(false);
-
-  const handleScroll = () => {
-    setIsSticky(window.scrollY > 800);
-  };
-
-  useEffect(() => {
-    window.addEventListener("scroll", handleScroll);
-
-    // Cleanup event listener on component unmount
-    return () => {
-      window.removeEventListener("scroll", handleScroll);
-    };
-  }, []);
   return (
     <>
-      <Navcontainer
-        style={
-          isSticky
-            ? {
-                position: "sticky",
-                top: 0,
-                left: 0,
-                zIndex: 999,
-                background: "rgba(13, 24, 23, 0.7)",
-              }
-            : {}
-        }
-      >
+      <Navcontainer>
         <div
           className="wrapper"
           style={{
