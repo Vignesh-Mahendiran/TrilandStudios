@@ -24,11 +24,14 @@ const Footer = () => {
             <h2>Contact Info</h2>
             <div>
               <PlaceIcon />
-              <p>Vinayagapuram, Surapet, Chennai - 600099</p>
+              <p>
+                Old Door No.6, New Door No.20, Andavar Nagar, 3rd Street,
+                Kodambakkam, Chennai - 600024
+              </p>
             </div>
             <div>
               <EmailIcon />
-              <p>trilandanimationstudios@gmail.com</p>
+              <p>contact@trilandstudios.in</p>
             </div>
             <div>
               <PhoneIcon />
