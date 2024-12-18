@@ -3,8 +3,9 @@ import Navbar from "../../module/Navbar";
 import { BannerContainer } from "../../styles/home";
 import ParticleCanvas from "../../shared/ParticleCanvas";
 import Banner from "../../module/Banner";
-import OurWork from "../../module/OurWork";
+import Services from "../../module/Services";
 import Footer from "../../module/Footer";
+import AboutUs from "../../module/AboutUs";
 
 const Home = () => {
   return (
@@ -13,9 +14,9 @@ const Home = () => {
       <BannerContainer>
         <Banner />
       </BannerContainer>
-      <OurWork />
+      <Services />
+      <AboutUs />
       <Footer />
-      <ParticleCanvas />
     </div>
   );
 };
