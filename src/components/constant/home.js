@@ -1,14 +1,26 @@
 import twoDCartoon from "../../assets/2D_Cartoon_Triland.mp4";
+import { ROUTE_PATHS } from "../../routes/routePath";
 
 export const navItems = [
-  { name: "Home", id: "home" },
+  { name: "Home", id: "home",
+    navigate:ROUTE_PATHS.home
+   },
   {
     name: "Services",
     id: "services",
     sub: [
-      { name: "2D Animation", id: "2dAnimation" },
-      { name: "3D Animation", id: "3dAnimation" },
-      { name: "Digital Marketing", id: "digitalMarketing" },
+      { name: "2D Animation", id: "2dAnimation",
+    navigate:ROUTE_PATHS.home
+
+       },
+      { name: "3D Animation", id: "3dAnimation",
+    navigate:ROUTE_PATHS.home
+
+       },
+      { name: "Digital Marketing", id: "digitalMarketing",
+    navigate:ROUTE_PATHS.home
+
+       },
     ],
   },
   { name: "About us", id: "aboutUs" },
@@ -17,8 +29,13 @@ export const navItems = [
     name: "connect",
     id: "",
     sub: [
-      { name: "Carrier", id: "carrier" },
-      { name: "Contact", id: "contact" },
+      { name: "Carrier",
+       id: "",
+         navigate:ROUTE_PATHS.carriers },
+      { name: "Contact", id: "contact",
+    navigate:ROUTE_PATHS.home
+
+       },
     ],
   },
 ];

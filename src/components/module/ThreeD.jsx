@@ -4,24 +4,22 @@ import twodVideo from "../../assets/2D_Cartoon_Triland.mp4";
 import PlayArrowIcon from "@mui/icons-material/PlayArrow";
 import { Box, IconButton, Modal } from "@mui/material";
 import { StyledModal } from "../styles/home";
+import ReactPlayer from "react-player/vimeo";
 
-const ThreeD = () => {
+const ThreeD = ({ isLower, title, content, output, subItem }) => {
   const [open, setOpen] = useState(false);
   const [inneropen, setinnerOpen] = useState(false);
 
   return (
     <>
       <div className="card-wrapper flip-diagonal-right">
-        <div className="card">
+        <div className="card" style={{ top: isLower ? 60 : 0 }}>
           <div className="front">
-            <img src={twoD1} alt="twoDimensions" />
+            <img src={output} alt="twoDimensions" />
           </div>
           <div className="back">
-            <h3>2D Cartoon</h3>
-            <p>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestias eaque laborum culpa
-              recusandae
-            </p>
+            <h3>{title}</h3>
+            <p>{content}</p>
 
             <div id="container" onClick={() => setOpen(true)}>
               <IconButton>
@@ -34,27 +32,44 @@ const ThreeD = () => {
       </div>
       <Modal open={open} onClose={() => setOpen(false)}>
         <StyledModal>
-          <h2 className="title">2d Animation</h2>
-          {/* <video controls src={twodVideo} style={{ width: 800 }} /> */}
+          <h2 className="title">{title}</h2>
           <div className="container">
-            <div>
-              <h4 className="subtitle">2D Cartoon</h4>
-              <img src={twoD1} alt="twoDimensions" onClick={() => setinnerOpen(true)} />
-            </div>
-            <div>
-              <h4 className="subtitle">2D Cartoon</h4>
-              <img src={twoD1} alt="twoDimensions" />
-            </div>
-            <div>
-              <h4 className="subtitle">2D Cartoon</h4>
-              <img src={twoD1} alt="twoDimensions" />
-            </div>
+            {subItem?.map((item) => (
+              <div>
+                <h4 className="subtitle">{item?.title}</h4>
+                <img
+                  src={item?.imageSrc}
+                  alt="twoDimensions"
+                  onClick={() => {
+                    setinnerOpen(true);
+                    setOpen(false);
+                  }}
+                />
+              </div>
+            ))}
           </div>
         </StyledModal>
       </Modal>
       <Modal open={inneropen} onClose={() => setinnerOpen(false)}>
-        <StyledModal style={{ width: 800, padding: 0, background: "transparent" }}>
-          <video controls src={twodVideo} style={{ width: 800 }} />
+        <StyledModal
+          style={{
+            maxWidth: "1200px",
+            width: "100%",
+            margin: "0 auto",
+            padding: 0,
+            background: "transparent",
+          }}
+        >
+          <div style={{}}>
+            <ReactPlayer
+              url="https://vimeo.com/1040361248"
+              playing={true}
+              controls={true}
+              muted={true}
+              width="100%"
+              height="500px"
+            />
+          </div>
         </StyledModal>
       </Modal>
     </>

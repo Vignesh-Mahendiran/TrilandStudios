@@ -1,5 +1,5 @@
 import React from "react";
-import triland from "../../assets/trilandStudio.png";
+import triland from "../../assets/trilandStudio.svg";
 import { FooterContainer } from "../styles/home";
 import PlaceIcon from "@mui/icons-material/Place";
 import EmailIcon from "@mui/icons-material/Email";
@@ -15,8 +15,9 @@ const Footer = () => {
         <div className="footerContent">
           <div>
             <p>
-              Triland Animation Studio's top priority is always to take care of our customers and meet their
-              goals. We deliver top-notch animation within your project time and budget.
+              Triland Animation Studio's top priority is always to take care of
+              our customers and meet their goals. We deliver top-notch animation
+              within your project time and budget.
             </p>
           </div>
           <div className="contactus">
@@ -41,7 +42,9 @@ const Footer = () => {
             </div>
           </div>
         </div>
-        <p className="copyrights">© 2024 || Triland Animation Studios || All rights reserved.</p>
+        <p className="copyrights">
+          © 2024 || Triland Animation Studios || All rights reserved.
+        </p>
       </div>
     </FooterContainer>
   );

@@ -10,8 +10,8 @@ export const BannerContainer = styled("div")({
     gap: 50,
     alignItems: "center",
     // margin: "0 auto",
-    p: { color: "#fff", fontSize: "1.2rem", lineHeight: 1.5 },
-    button: {
+    p: { color: "#fff", fontSize: "1.2rem", lineHeight: 1.5,marginBottom:40 },
+    a: {
       all: "unset",
       color: "#fff",
       border: "1px solid #fff",
@@ -25,29 +25,50 @@ export const BannerContainer = styled("div")({
       letterSpacing: "0.15em",
       background: "transparent",
     },
-    "button:hover": {
+    "a:hover": {
       color: "#fff",
     },
     ".leftBanner": {
       position: "relative",
       height: "100vh",
-      background: "#00000087",
+      width:"100vw",
+      background: "#0000000f",
       display: "flex",
       alignItems: "center",
     },
-    // ".rightBanner": {
-    //   width: "50%",
-    // },
+    ".rightBanner": {
+      width: "100vw",
+      height: "135vh",
+      position: "absolute",
+      top: "-17vh",
+    },
   },
   h1: { fontSize: "3.2rem", color: "#fff", fontFamily: "Roboto Condensed", marginBottom: 20 },
   h2: { fontSize: "2.6rem", color: "#fff", fontFamily: "Roboto Condensed", marginBottom: 20 },
-
+".bannerContent":{
+  maxWidth: 800, width: "40%" ,
+},
   "@media screen and (max-width: 768px)": {
-    height: "100%",
+    height: "97vh",
+    
     ".banner": {
       paddingBlock: "80px !important",
-      maxWidth: 500,
+      textAlign:"center",
       p: { fontSize: "1rem" },
+      ".rightBanner": {
+        width: "100vw",
+        height: "130vh",
+        position: "absolute",
+        top: "-17vh",
+      },
+      ".leftBanner":{
+        top:"-10vh",
+      }
+   
+    },
+    ".bannerContent":{
+      width:"90%",
+      margin:"0 auto"
     },
     h1: { fontSize: "2.4rem" },
   },
@@ -86,6 +107,7 @@ export const PopoverContainer = styled("div")({
     textTransform: "uppercase",
     textDecoration: "none",
     letterSpacing: "0.15em",
+    fontWeight:600,
     display: "inline-block",
     position: "relative",
   },
@@ -157,14 +179,13 @@ export const Navcontainer = styled("div")({
   },
   img: {
     width: 200,
-    marginTop: 20,
   },
   "@media screen and (max-width: 1200px)": {
     width: "calc(100% - 40px) !important",
   },
   "@media screen and (max-width: 768px)": {
     nav: { display: "none" },
-    width: "100%",
+    width: "100vw !important",
     ".menus": { display: "block", cursor: "pointer", position: "absolute", right: 10, top: 20 },
   },
   "@media screen and (max-width: 600px)": {
@@ -269,11 +290,11 @@ export const SocialMediaContainer = styled("div")({
 
 export const StyledDrawer = styled(Drawer)({
   "& .MuiPaper-root": {
-    background: "#0d1817",
+    background: "#fff",
   },
   ".content": {
     width: 300,
-    background: "#0d1817",
+    background: "#fff",
   },
   ul: {
     listStyle: "none",
@@ -305,7 +326,6 @@ export const ServiceContainer = styled("div")({
   ".wrapper": {
     display: "flex",
     justifyContent: "center",
-    gap: 30,
   },
   ".title": {
     textAlign: "center",
@@ -318,9 +338,8 @@ export const ServiceContainer = styled("div")({
   },
   ".card img, .card video": {
     width: 500,
-    height: 500,
+    height: 400,
     objectFit: "cover",
-    borderRadius: 5,
   },
   svg: {
     fontSize: 35,
@@ -328,11 +347,9 @@ export const ServiceContainer = styled("div")({
     background: "#fff",
   },
   ".card": {
-    boxShadow: "rgba(0, 0, 0, 0.15) 0px 5px 15px 0px",
     position: "relative",
-    borderRadius: 5,
-    width: "500px",
-    height: "500px",
+    width: 500,
+    height: 400,
     cursor: "pointer",
     transformStyle: "preserve-3d",
     transition: "transform 0.6s ease-in-out",
@@ -371,6 +388,29 @@ export const ServiceContainer = styled("div")({
   ".card-wrapper.flip-diagonal-right:hover .card": {
     transform: "rotate3d(1, 1, 0, 180deg)",
   },
+  "@media screen and (max-width: 768px)": {
+    ".wrapper": {
+      flexDirection:"column"
+    },
+    ".title": {
+      padding: "60px 0 30px",
+    },
+    ".card":{
+      top:"0 !important",
+      margin:"0 auto",
+      marginBottom:30,
+      width:"100%",
+      width: 400,
+      height: 200,
+    },
+    ".card img, .card video": {
+      width: 400,
+      height: 200,
+       objectFit: "cover",
+    },
+   
+   
+  }
 });
 
 export const StyledModal = styled("div")({
@@ -378,11 +418,15 @@ export const StyledModal = styled("div")({
   top: "50%",
   left: "50%",
   transform: "translate(-50%, -50%)",
-  width: 1200,
+  maxWidth: 1200,
+  width:"90%",
   padding: 20,
   boxShadow: 24,
   outline: 0,
   background: "#fff",
+  iframe:{
+    outline:0,
+  },
   img: { width: 320, height: 320 },
   ".title": {
     textAlign: "center",
@@ -393,4 +437,9 @@ export const StyledModal = styled("div")({
     marginBottom: 20,
   },
   ".container": { display: "flex", justifyContent: "space-between" },
+  "@media screen and (max-width: 768px)": {
+
+    ".container": { flexDirection:"column" },
+
+  }
 });
