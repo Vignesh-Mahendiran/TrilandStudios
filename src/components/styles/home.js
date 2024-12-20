@@ -335,6 +335,7 @@ export const ServiceContainer = styled("div")({
   ".card-wrapper": {
     display: "inline-block",
     perspective: "1000px",
+
   },
   ".card img, .card video": {
     width: 500,
@@ -388,6 +389,30 @@ export const ServiceContainer = styled("div")({
   ".card-wrapper.flip-diagonal-right:hover .card": {
     transform: "rotate3d(1, 1, 0, 180deg)",
   },
+
+  "@media screen and (max-width: 1600px)": {
+    ".card , .card img, .card video": {
+      width: 400,
+      height: 320,
+    }  
+  },
+  "@media screen and (max-width: 1300px)": {
+    ".card , .card img, .card video": {
+      width: 350,
+      height: 280,
+    }  
+  },
+  "@media screen and (max-width: 1120px)": {
+    ".card , .card img, .card video": {
+      width: 300,
+      height: 260,
+    }  
+  },
+  "@media screen and (max-width: 960px)": {
+    ".card , .card img, .card video": {
+      width: 250,
+    }  
+  },
   "@media screen and (max-width: 768px)": {
     ".wrapper": {
       flexDirection:"column"
@@ -399,18 +424,14 @@ export const ServiceContainer = styled("div")({
       top:"0 !important",
       margin:"0 auto",
       marginBottom:30,
-      width:"100%",
-      width: 400,
-      height: 200,
+      width: "100%",
     },
     ".card img, .card video": {
-      width: 400,
-      height: 200,
-       objectFit: "cover",
+      width: "100%",
+      objectFit: "cover",
     },
-   
-   
-  }
+  },
+ 
 });
 
 export const StyledModal = styled("div")({
