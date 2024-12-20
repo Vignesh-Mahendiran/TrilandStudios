@@ -9,15 +9,15 @@ export const navItems = [
     name: "Services",
     id: "services",
     sub: [
-      { name: "2D Animation", id: "2dAnimation",
+      { name: "2D Animation", id: "services",
     navigate:ROUTE_PATHS.home
 
        },
-      { name: "3D Animation", id: "3dAnimation",
+      { name: "3D Animation", id: "services",
     navigate:ROUTE_PATHS.home
 
        },
-      { name: "Digital Marketing", id: "digitalMarketing",
+      { name: "Digital Marketing", id: "services",
     navigate:ROUTE_PATHS.home
 
        },
