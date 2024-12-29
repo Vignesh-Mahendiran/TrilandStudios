@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { ServiceContainer } from "../styles/home";
 // import { menuCards } from "../constant/home";
 import twodVideo from "../../assets/2D_Cartoon_Triland.mp4";
@@ -14,32 +14,69 @@ import digimar from "../../assets/digi.jpg";
 import editing from "../../assets/editing.jpg";
 import gaming from "../../assets/gaming.jpg";
 import vfx from "../../assets/vfx.jpg";
+import ReactPlayer from "react-player";
 
-const threeDsubmenu = [
-  { title: "3D Watch Product Animation", videosrc: "", imageSrc: three3done },
-  { title: "", videosrc: "", imageSrc: "" },
-  { title: "", videosrc: "", imageSrc: "" },
-];
 const Services = () => {
-  const [playVideo, setPlayVideo] = useState(false);
+  const [screenWidth, setScreenWidth] = useState(window.innerWidth);
+
+  useEffect(() => {
+    const handleResize = () => {
+      setScreenWidth(window.innerWidth);
+    };
+
+    // Add event listener for window resize
+    window.addEventListener("resize", handleResize);
+
+    // Cleanup the event listener on component unmount
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
+  }, []);
   return (
     <>
       <ServiceContainer>
         <h2 className="title">Our Services</h2>
         <div className="wrapper">
           <ThreeD
-            title={"3D A nimations"}
-            content={""}
+            contentId={"3dAnimation"}
+            title={"3D Animations"}
+            content={"Where Imagination Meets Precision"}
             output={threeDOutput}
-            subItem={threeDsubmenu}
           />
-          <ThreeD output={twoDOutput} isLower />
-          <ThreeD output={digimar} />
+          <ThreeD
+            contentId={"2dAnimation"}
+            title={"2D Animations"}
+            content={"Telling Stories Through 2D Motion"}
+            output={twoDOutput}
+            isLower
+          />
+          <ThreeD
+            title={"Digital Marketing & Advertisements"}
+            content={"Building Bridges Between You and Your Customers"}
+            contentId={"digitalMarketing"}
+            output={digimar}
+          />
         </div>
         <div className="wrapper">
-          <ThreeD output={editing} />
-          <ThreeD output={gaming} isLower />
-          <ThreeD output={vfx} />
+          <ThreeD
+            title={"Audio / Video Editing"}
+            content={"Transforming Raw Footage Into Art"}
+            contentId={"vfxEditing"}
+            output={editing}
+          />
+          <ThreeD
+            title={"Cinematic Advertisement"}
+            content={"Because Your Brand Deserves the Spotlight"}
+            contentId={"digitalMarketing"}
+            output={gaming}
+            isLower
+          />
+          <ThreeD
+            title={"Visual Effects"}
+            content={"Because Reality Isn’t Enough"}
+            contentId={"vfxEditing"}
+            output={vfx}
+          />
         </div>
         <h2 className="title">Show Reel</h2>
         <div
@@ -55,7 +92,25 @@ const Services = () => {
               maxWidth: 1200,
             }}
           >
-            {playVideo ? (
+            <ReactPlayer
+              url={"https://vimeo.com/1042734577?share=copy"}
+              playing={false}
+              controls={true}
+              muted={true}
+              loop={true}
+              width="100%"
+              height={
+                screenWidth > 1200
+                  ? "800px"
+                  : screenWidth > 800
+                  ? "500px"
+                  : screenWidth > 600
+                  ? "300px"
+                  : "250px"
+              }
+            />
+
+            {/* {playVideo ? (
               <video
                 controls
                 src={twodVideo}
@@ -87,7 +142,7 @@ const Services = () => {
                   <PlayArrowIcon />
                 </IconButton>
               </>
-            )}
+            )} */}
           </div>
         </div>
       </ServiceContainer>

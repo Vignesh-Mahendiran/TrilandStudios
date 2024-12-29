@@ -2,8 +2,8 @@ import React from "react";
 import Navbar from "../../module/Navbar";
 import Footer from "../../module/Footer";
 import { styled } from "@mui/material";
-import { width } from "@fortawesome/free-brands-svg-icons/fa42Group";
-
+import threeDOutput from "../../../assets/3doutput.jpg";
+import { height } from "@fortawesome/free-brands-svg-icons/fa42Group";
 const Container = styled("div")({
   // marginTop: -50,
 
@@ -12,7 +12,7 @@ const Container = styled("div")({
   },
   ".banner": {
     position: "relative",
-    top: 87,
+    top: 83,
     minHeight: "calc(100vh - 88px)",
   },
   ".actualBanner": {
@@ -21,7 +21,11 @@ const Container = styled("div")({
   },
   ".mainBanner": {
     textAlign: "center",
-    background: "#ccc",
+    background: `url(${threeDOutput}), no-repeat`,
+    backgroundSize: "cover",
+    height: "50vh",
+    // backgroundPosition: "10% 150%",
+    backgroundAttachment: "fixed",
     marginBottom: 20,
     padding: 40,
   },

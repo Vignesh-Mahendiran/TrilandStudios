@@ -1,6 +1,5 @@
-import { height, width } from "@fortawesome/free-brands-svg-icons/fa42Group";
 import { Drawer, keyframes, Modal, styled } from "@mui/material";
-
+import footer from "../../assets/footer.png";
 export const BannerContainer = styled("div")({
   ".banner": {
     // maxWidth: 1700,
@@ -10,7 +9,7 @@ export const BannerContainer = styled("div")({
     gap: 50,
     alignItems: "center",
     // margin: "0 auto",
-    p: { color: "#fff", fontSize: "1.2rem", lineHeight: 1.5,marginBottom:40 },
+    p: { color: "#fff", fontSize: "1.2rem", lineHeight: 1.5, marginBottom: 40 },
     a: {
       all: "unset",
       color: "#fff",
@@ -31,7 +30,7 @@ export const BannerContainer = styled("div")({
     ".leftBanner": {
       position: "relative",
       height: "100vh",
-      width:"100vw",
+      width: "100vw",
       background: "#0000000f",
       display: "flex",
       alignItems: "center",
@@ -41,19 +40,31 @@ export const BannerContainer = styled("div")({
       height: "135vh",
       position: "absolute",
       top: "-17vh",
+      background: "#000",
     },
   },
-  h1: { fontSize: "3.2rem", color: "#fff", fontFamily: "Roboto Condensed", marginBottom: 20 },
-  h2: { fontSize: "2.6rem", color: "#fff", fontFamily: "Roboto Condensed", marginBottom: 20 },
-".bannerContent":{
-  maxWidth: 800, width: "40%" ,
-},
+  h1: {
+    fontSize: "3.2rem",
+    color: "#fff",
+    fontFamily: "Roboto Condensed",
+    marginBottom: 20,
+  },
+  h2: {
+    fontSize: "2.6rem",
+    color: "#fff",
+    fontFamily: "Roboto Condensed",
+    marginBottom: 20,
+  },
+  ".bannerContent": {
+    maxWidth: 800,
+    width: "40%",
+  },
   "@media screen and (max-width: 768px)": {
     height: "97vh",
-    
+
     ".banner": {
       paddingBlock: "80px !important",
-      textAlign:"center",
+      textAlign: "center",
       p: { fontSize: "1rem" },
       ".rightBanner": {
         width: "100vw",
@@ -61,14 +72,13 @@ export const BannerContainer = styled("div")({
         position: "absolute",
         top: "-17vh",
       },
-      ".leftBanner":{
-        top:"-10vh",
-      }
-   
+      ".leftBanner": {
+        top: "-10vh",
+      },
     },
-    ".bannerContent":{
-      width:"90%",
-      margin:"0 auto"
+    ".bannerContent": {
+      width: "90%",
+      margin: "0 auto",
     },
     h1: { fontSize: "2.4rem" },
   },
@@ -107,7 +117,7 @@ export const PopoverContainer = styled("div")({
     textTransform: "uppercase",
     textDecoration: "none",
     letterSpacing: "0.15em",
-    fontWeight:600,
+    fontWeight: 600,
     display: "inline-block",
     position: "relative",
   },
@@ -183,10 +193,16 @@ export const Navcontainer = styled("div")({
   "@media screen and (max-width: 1200px)": {
     width: "calc(100% - 40px) !important",
   },
-  "@media screen and (max-width: 768px)": {
+  "@media screen and (max-width: 848px)": {
     nav: { display: "none" },
     width: "100vw !important",
-    ".menus": { display: "block", cursor: "pointer", position: "absolute", right: 10, top: 20 },
+    ".menus": {
+      display: "block",
+      cursor: "pointer",
+      position: "absolute",
+      right: 10,
+      top: 20,
+    },
   },
   "@media screen and (max-width: 600px)": {
     justifyContent: "center",
@@ -194,10 +210,27 @@ export const Navcontainer = styled("div")({
 });
 
 export const FooterContainer = styled("div")({
-  background: "#000",
+  background: `url(${footer}), no-repeat`,
+  position: "relative",
+  backgroundPosition: "102% 100%",
+  backgroundSize: "cover",
   color: "#fff",
+  ".dialog": {
+    position: "relative",
+    zIndex: 999,
+  },
+  ".content": {
+    position: "absolute",
+    top: "0",
+    left: "0",
+    width: "100%",
+    height: "100%",
+    backgroundColor: "rgb(0 0 0 / 34%)",
+  },
   ".logo img": {
-    width: 200,
+    width: 300,
+    marginLeft: "-50px",
+    marginTop: -20,
   },
   "@media screen and (max-width: 768px)": {
     ".logo": {
@@ -212,7 +245,7 @@ export const FooterContainer = styled("div")({
     display: "flex",
     width: "90%",
     margin: "20px auto",
-    justifyContent: "flex-end",
+    justifyContent: "space-between",
     gap: 40,
     div: {
       maxWidth: 400,
@@ -231,6 +264,13 @@ export const FooterContainer = styled("div")({
     marginTop: 80,
     textAlign: "center",
     paddingBlock: 20,
+  },
+  "@media screen and (max-width: 767px)": {
+    ".logo img": {
+      width: 250,
+      marginLeft: "0px",
+      marginTop: 0,
+    },
   },
 
   "@media screen and (max-width: 1220px)": {
@@ -253,7 +293,7 @@ export const SocialMediaContainer = styled("div")({
     display: "inline-block",
     width: "50px",
     height: "50px",
-    background: "#0d1817",
+    background: "transparent",
     margin: "10px",
     borderRadius: "50%",
     boxShadow: "0 5px 15px -5px #535c68",
@@ -329,17 +369,17 @@ export const ServiceContainer = styled("div")({
   },
   ".title": {
     textAlign: "center",
-    padding: "80px 0 30px",
-    fontSize: 28,
+    padding: "90px 0 0px",
+    marginBottom: -50,
+    fontSize: 32,
   },
   ".card-wrapper": {
     display: "inline-block",
     perspective: "1000px",
-
   },
   ".card img, .card video": {
-    width: 500,
-    height: 400,
+    width: 540,
+    height: 420,
     objectFit: "cover",
   },
   svg: {
@@ -349,7 +389,7 @@ export const ServiceContainer = styled("div")({
   },
   ".card": {
     position: "relative",
-    width: 500,
+    width: 540,
     height: 400,
     cursor: "pointer",
     transformStyle: "preserve-3d",
@@ -392,38 +432,49 @@ export const ServiceContainer = styled("div")({
 
   "@media screen and (max-width: 1600px)": {
     ".card , .card img, .card video": {
-      width: 400,
+      width: 420,
       height: 320,
-    }  
+    },
   },
   "@media screen and (max-width: 1300px)": {
     ".card , .card img, .card video": {
       width: 350,
       height: 280,
-    }  
+    },
+  },
+  "@media screen and (max-width: 1200px)": {
+    ".title": {
+      padding: "90px 0 0px",
+      marginBottom: 10,
+    },
   },
   "@media screen and (max-width: 1120px)": {
     ".card , .card img, .card video": {
       width: 300,
       height: 260,
-    }  
+    },
   },
   "@media screen and (max-width: 960px)": {
     ".card , .card img, .card video": {
       width: 250,
-    }  
+    },
+    ".title": {
+      padding: "90px 0 0px",
+      marginBottom: -20,
+    },
   },
   "@media screen and (max-width: 768px)": {
     ".wrapper": {
-      flexDirection:"column"
+      flexDirection: "column",
     },
     ".title": {
-      padding: "60px 0 30px",
+      padding: "10px 0 0px",
+      marginBottom: 10,
     },
-    ".card":{
-      top:"0 !important",
-      margin:"0 auto",
-      marginBottom:30,
+    ".card": {
+      top: "0 !important",
+      margin: "0 auto",
+      marginBottom: 30,
       width: "100%",
     },
     ".card img, .card video": {
@@ -431,7 +482,6 @@ export const ServiceContainer = styled("div")({
       objectFit: "cover",
     },
   },
- 
 });
 
 export const StyledModal = styled("div")({
@@ -440,27 +490,7 @@ export const StyledModal = styled("div")({
   left: "50%",
   transform: "translate(-50%, -50%)",
   maxWidth: 1200,
-  width:"90%",
-  padding: 20,
-  boxShadow: 24,
+  width: "90%",
   outline: 0,
-  background: "#fff",
-  iframe:{
-    outline:0,
-  },
-  img: { width: 320, height: 320 },
-  ".title": {
-    textAlign: "center",
-    marginBottom: 20,
-  },
-  ".subtitle": {
-    textAlign: "center",
-    marginBottom: 20,
-  },
-  ".container": { display: "flex", justifyContent: "space-between" },
-  "@media screen and (max-width: 768px)": {
-
-    ".container": { flexDirection:"column" },
-
-  }
+  height: 500,
 });
