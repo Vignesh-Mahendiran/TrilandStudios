@@ -212,7 +212,7 @@ export const Navcontainer = styled("div")({
 export const FooterContainer = styled("div")({
   background: `url(${footer}), no-repeat`,
   position: "relative",
-  backgroundPosition: "102% 100%",
+  backgroundPosition: "100% 100%",
   backgroundSize: "cover",
   color: "#fff",
   ".dialog": {
