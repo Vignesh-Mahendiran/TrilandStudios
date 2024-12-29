@@ -28,6 +28,9 @@ const Navbar = () => {
         >
           <img
             src={trilandStudios}
+            style={{
+              cursor: "pointer",
+            }}
             alt="trilandStudioLogo"
             onClick={() => navigate("/")}
           />

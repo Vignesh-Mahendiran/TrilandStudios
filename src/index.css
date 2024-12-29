@@ -1,6 +1,8 @@
 @import url("https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Roboto+Condensed:ital,wght@0,100..900;1,100..900&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Oswald:wght@200..700&display=swap');
 
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+Display:ital,wght@0,100..900;1,100..900&display=swap');
 * {
   margin: 0;
 }
@@ -29,7 +31,7 @@ canvas {
 }
 
 #container {
-  margin-top: 20px;
+  margin-top: 130px;
   margin-left: 30px;
   position: absolute;
   z-index: 9999;
@@ -76,3 +78,16 @@ canvas {
     opacity: 0.1;
   }
 }
+
+::selection {
+  background-color: rgba(0, 0, 0, 0.3); /* Black with 30% transparency */
+  color: white; /* Optional: Change text color */
+}
+
+/* For Firefox compatibility */
+::-moz-selection {
+  background-color: rgba(0, 0, 0, 0.3);
+  color: white;
+}
+
+

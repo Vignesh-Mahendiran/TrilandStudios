@@ -1,12 +1,15 @@
 import React from "react";
 import thumbnail from "../../assets/thumnail.jpg";
 import { styled } from "@mui/material";
+import { ROUTE_PATHS } from "../../routes/routePath";
+import { useNavigate } from "react-router-dom";
 export const StyledButton = styled("div")({
   border: "2px solid #fff",
   padding: "10px 20px",
   borderRadius: 5,
   fontSize: 12,
   width: "max-content",
+  cursor: "pointer",
   textTransform: "uppercase",
 });
 
@@ -84,20 +87,42 @@ const StrokeContainer = styled("div")({
   },
 });
 const AboutUs = () => {
+  const navigate = useNavigate();
+  function scrollToTop() {
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth", // This enables smooth scrolling to the top
+    });
+  }
+
   return (
     <>
-      <h1 style={{ textAlign: "center", margin: "80px 0 20px" }}>About Us</h1>
+      <h1 id="aboutUs" style={{ textAlign: "center", margin: "80px 0 20px" }}>
+        About Us
+      </h1>
 
       <Container>
         <div className="content">
           <StyledText>WHO WE ARE</StyledText>
-          <Title>Let Your Animation Do The Walking.</Title>
+          <Title>
+            From concept to creation, we bring your vision to life as we speak.
+          </Title>
           <p>
-            In etiam tempus donec morbi dignissim montes conubia. Fermentum
-            risus dapibus rutrum cubilia cras purus. Pede vel vivamus maximus
-            venenatis elementum vestibulum curabitur.
+            At our Triland Animation Studios, every idea is an opportunity to
+            create something extraordinary. We take your concepts and transform
+            them into dynamic visual experiences, capturing the essence of your
+            vision. With seamless creativity and cutting-edge techniques, we
+            craft stories that engage and inspire. From start to finish, we turn
+            your ideas into reality, one frame at a time.
           </p>
-          <StyledButton className="button" style={{ borderColor: "#000" }}>
+          <StyledButton
+            className="button"
+            style={{ borderColor: "#000" }}
+            onClick={() => {
+              navigate(ROUTE_PATHS.services);
+              scrollToTop();
+            }}
+          >
             Discover more
           </StyledButton>
         </div>
