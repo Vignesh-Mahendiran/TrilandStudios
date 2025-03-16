@@ -1,5 +1,6 @@
 import React from "react";
 import triland from "../../assets/trilandStudio.svg";
+import trilandLogo from "../../assets/firstLogo.png";
 import { FooterContainer } from "../styles/home";
 import PlaceIcon from "@mui/icons-material/Place";
 import EmailIcon from "@mui/icons-material/Email";
@@ -7,6 +8,7 @@ import PhoneIcon from "@mui/icons-material/Phone";
 import SocialMedia from "./SocialMedia";
 import { ROUTE_PATHS } from "../../routes/routePath";
 import { useNavigate } from "react-router-dom";
+import ContactForm from "./Form";
 const Footer = () => {
   const navigate = useNavigate();
   function scrollToTop() {
@@ -23,7 +25,9 @@ const Footer = () => {
           <div className="footerContent">
             <div>
               <div className="logo">
+                {/* <img src={trilandLogo} className="trilandLogo" /> */}
                 <img
+                  className="triland"
                   src={triland}
                   style={{
                     cursor: "pointer",
@@ -40,6 +44,12 @@ const Footer = () => {
                 of our customers and meet their goals. We deliver top-notch
                 animation within your project time and budget.
               </p>
+              <div style={{ marginTop: 10 }}>
+                <h2>Follow us</h2>
+                <div>
+                  <SocialMedia />
+                </div>
+              </div>
             </div>
             <div className="contactus">
               <h2>Contact Info</h2>
@@ -60,10 +70,7 @@ const Footer = () => {
               </div>
             </div>
             <div>
-              <h2>Follow us</h2>
-              <div>
-                <SocialMedia />
-              </div>
+              <ContactForm />
             </div>
           </div>
           <p className="copyrights">

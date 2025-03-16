@@ -227,7 +227,7 @@ export const FooterContainer = styled("div")({
     height: "100%",
     backgroundColor: "rgb(0 0 0 / 34%)",
   },
-  ".logo img": {
+  ".logo .triland": {
     width: 300,
     marginLeft: "-50px",
     marginTop: -20,
