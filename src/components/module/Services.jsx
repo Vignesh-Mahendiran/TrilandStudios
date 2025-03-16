@@ -1,8 +1,11 @@
 import { styled } from "@mui/material";
-import React, { useEffect, useState } from "react";
+import React, { useState, useRef } from "react";
 import ReactPlayer from "react-player";
 import { newServices } from "../constant/home";
-import { OtherHouses } from "@mui/icons-material";
+import PlayArrowIcon from "@mui/icons-material/PlayArrow";
+import PauseIcon from "@mui/icons-material/Pause";
+import VolumeOffIcon from "@mui/icons-material/VolumeOff";
+import VolumeUpIcon from "@mui/icons-material/VolumeUp";
 
 const Container = styled("div")({
   "& h1": {
@@ -23,21 +26,60 @@ const Container = styled("div")({
     flexDirection: "column",
     alignItems: "center",
     textAlign: "left",
+    position: "relative",
   },
   ".playerWrapper": {
     position: "relative",
     width: "100%",
+    paddingTop: "56.25%", // 16:9 Aspect Ratio
   },
-  img: {
-    maxWidth: "100%",
-  },
-  ".react-player, .playerWrapper img": {
+  ".controlButton": {
     position: "absolute",
-    top: 0,
-    left: 0,
-    width: "100% !important",
-    height: "100% !important",
-    objectFit: "cover", // Ensures the image fills the space like a video
+    bottom: "50%",
+    left: "50%",
+    transform: "translate(-50%, 50%)",
+    width: 50,
+    height: 50,
+    background: "rgba(0, 0, 0, 0.6)",
+    borderRadius: "50%",
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "center",
+    color: "#fff",
+    fontSize: 30,
+    cursor: "pointer",
+    transition: "0.3s",
+    opacity: 1,
+    "&:hover": {
+      background: "rgba(0, 0, 0, 0.8)",
+    },
+  },
+  ".soundButton": {
+    position: "absolute",
+    bottom: "10px",
+    right: "10px",
+    width: 40,
+    height: 40,
+    background: "rgba(0, 0, 0, 0.6)",
+    borderRadius: "50%",
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "center",
+    color: "#fff",
+    fontSize: 24,
+    cursor: "pointer",
+    transition: "0.3s",
+    opacity: 0,
+  },
+  ".videoContainer:hover .soundButton": {
+    opacity: 1, // Show sound button on hover
+  },
+  ".hidden": {
+    opacity: 0,
+    transition: "opacity 0.3s ease-in-out",
+  },
+  ".videoContainer:hover .controlButton": {
+    opacity: 1, // Show play/pause button when hovered
   },
   ".react-player": {
     position: "absolute",
@@ -71,6 +113,25 @@ const Container = styled("div")({
 });
 
 const Services = () => {
+  const [playingVideos, setPlayingVideos] = useState({});
+  const [mutedVideos, setMutedVideos] = useState({});
+  const videoRefs = useRef({});
+
+  const togglePlayPause = (url) => {
+    setPlayingVideos(url);
+  };
+
+  const toggleMute = (url) => {
+    setMutedVideos(url);
+  };
+
+  const handleVideoEnd = (index) => {
+    if (videoRefs.current[index]) {
+      videoRefs.current[index].seekTo(0); // Reset video to start
+    }
+    setPlayingVideos((prev) => ({ ...prev, [index]: false })); // Pause the video
+  };
+
   return (
     <Container id="services">
       <div className="wrapper">
@@ -85,26 +146,44 @@ const Services = () => {
         >
           {newServices.map((item, index) => (
             <div key={index} className="videoContainer" id={item.id}>
-              <div
-                className="playerWrapper"
-                style={{
-                  paddingTop: "56.25%",
-                }}
-              >
-                {item.imgUrl ? (
-                  <img src={item.imgUrl} />
-                ) : (
-                  <ReactPlayer
-                    className="react-player"
-                    url={item.url}
-                    playing={false}
-                    controls={true}
-                    muted={true}
-                    loop={true}
-                    width="100%"
-                    height="100%"
-                  />
-                )}
+              <div className="playerWrapper">
+                <ReactPlayer
+                  ref={(player) => (videoRefs.current[index] = player)}
+                  className="react-player"
+                  url={`${item.url}`}
+                  playing={playingVideos === item.url || false}
+                  muted={mutedVideos === item.url || false}
+                  controls={false}
+                  width="100%"
+                  height="100%"
+                  onEnded={() => handleVideoEnd(index)} // Reset when finished
+                />
+                <div
+                  className={`controlButton ${
+                    playingVideos[index] ? "hidden" : ""
+                  }`}
+                  onClick={() =>
+                    togglePlayPause(item.url === playingVideos ? "" : item.url)
+                  }
+                >
+                  {playingVideos === item.url ? (
+                    <PauseIcon fontSize="large" />
+                  ) : (
+                    <PlayArrowIcon fontSize="large" />
+                  )}
+                </div>
+                <div
+                  className="soundButton"
+                  onClick={() =>
+                    toggleMute(item.url === mutedVideos ? "" : item.url)
+                  }
+                >
+                  {mutedVideos === item.url ? (
+                    <VolumeOffIcon fontSize="small" />
+                  ) : (
+                    <VolumeUpIcon fontSize="small" />
+                  )}
+                </div>
               </div>
               <div className="videoDetails">
                 <h3>{item.title}</h3>
