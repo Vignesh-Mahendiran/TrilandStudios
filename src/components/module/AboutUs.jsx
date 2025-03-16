@@ -1,5 +1,5 @@
 import React from "react";
-import thumbnail from "../../assets/thumnail.jpg";
+import thumbnail from "../../assets/aboutus.png";
 import { styled } from "@mui/material";
 import { ROUTE_PATHS } from "../../routes/routePath";
 import { useNavigate } from "react-router-dom";
@@ -33,17 +33,36 @@ const Container = styled("div")({
   width: "90%",
   margin: "60px auto",
   display: "flex",
+  alignItems: "center",
+  background: "#fff",
   overflow: "hidden",
-  p: { marginBottom: 30 },
+  span: {
+    color: "#f1bf1e",
+  },
+
+  p: {
+    marginBottom: 30,
+    fontFamily: "Bangers",
+    fontSize: 32,
+    letterSpacing: 2.5,
+    lineHeight: 1.2,
+    fontWeight: 700,
+  },
   ".content": {
-    width: "48%",
+    width: "50%",
   },
   ".aboutUs": {
-    width: "50%",
+    width: "30%",
     paddingLeft: 100,
+  },
+  "@media screen and (max-width: 1024px)": {
+    p: {
+      fontSize: 24,
+    },
   },
   "@media screen and (max-width: 768px)": {
     flexDirection: "column",
+    p: { fontSize: 28 },
     ".content": {
       width: "100%",
       textAlign: "center",
@@ -57,26 +76,13 @@ const Container = styled("div")({
     },
   },
 });
-const StyledText = styled("p")({
-  color: "#4c8dff",
-  fontWeight: 600,
-  fontSize: 18,
-  marginBottom: 20,
-});
-const Title = styled("p")({
-  fontWeight: 700,
-  letterSpacing: "-1px",
-  margin: "5px 0 20px",
-  lineHeight: 1,
-  fontSize: 42,
-});
 const StrokeContainer = styled("div")({
   width: "100%",
   position: "relative",
   margin: "0 auto 50px",
   img: {
-    borderRadius: 20,
     objectFit: "cover",
+    maxWidth: "100%",
   },
   "@media screen and (max-width: 768px)": {
     margin: "30px auto 50px",
@@ -96,44 +102,49 @@ const AboutUs = () => {
   }
 
   return (
-    <>
-      <h1 id="aboutUs" style={{ textAlign: "center", margin: "80px 0 20px" }}>
+    <div
+      style={{ background: "#fff", position: "relative", padding: 10, top: 0 }}
+    >
+      <h1
+        id="aboutUs"
+        style={{
+          textAlign: "center",
+          margin: "20px auto 20px",
+          background: "#3cc4f1",
+          padding: "10px 40px",
+          color: "#fff",
+          fontFamily: "Bangers",
+          borderRadius: 20,
+          fontWeight: 100,
+          letterSpacing: 2,
+          fontSize: 40,
+          width: "max-content",
+          "-webkit-text-fill-color": "#fff",
+          "-webkit-text-stroke": "1px #000",
+        }}
+      >
         About Us
       </h1>
 
       <Container>
         <div className="content">
-          <StyledText>WHO WE ARE</StyledText>
-          <Title>
-            From concept to creation, we bring your vision to life as we speak.
-          </Title>
           <p>
-            At our Triland Animation Studios, every idea is an opportunity to
-            create something extraordinary. We take your concepts and transform
-            them into dynamic visual experiences, capturing the essence of your
-            vision. With seamless creativity and cutting-edge techniques, we
-            craft stories that engage and inspire. From start to finish, we turn
-            your ideas into reality, one frame at a time.
+            We have a passion for storytelling that shines in our work, and we
+            take great pride in our ability{" "}
+            <span>to bring our client's visions to life.</span> from cartoon
+            webseries and television commercials to billboard ads and marketing
+            animations, we have the tools and expertise to bring any project to
+            life.
           </p>
-          <StyledButton
-            className="button"
-            style={{ borderColor: "#000" }}
-            onClick={() => {
-              navigate(ROUTE_PATHS.services);
-              scrollToTop();
-            }}
-          >
-            Discover more
-          </StyledButton>
         </div>
         <div className="aboutUs">
           <StrokeContainer>
-            <StyledStroke>About</StyledStroke>
-            <img src={thumbnail} height={400} alt="thumbnail" />
+            {/* <StyledStroke>About</StyledStroke> */}
+            <img src={thumbnail} alt="thumbnail" />
           </StrokeContainer>
         </div>
       </Container>
-    </>
+    </div>
   );
 };
 

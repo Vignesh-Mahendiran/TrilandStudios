@@ -1,152 +1,120 @@
+import { styled } from "@mui/material";
 import React, { useEffect, useState } from "react";
-import { ServiceContainer } from "../styles/home";
-// import { menuCards } from "../constant/home";
-import twodVideo from "../../assets/2D_Cartoon_Triland.mp4";
-import { services } from "../constant/home";
-import collation from "../../assets/international.jpg";
-import ThreeD from "./ThreeD";
-import { IconButton } from "@mui/material";
-import PlayArrowIcon from "@mui/icons-material/PlayArrow";
-import threeDOutput from "../../assets/3doutput.jpg";
-import twoDOutput from "../../assets/2doutput.jpeg";
-import three3done from "../../assets/three3done.png";
-import digimar from "../../assets/digi.jpg";
-import editing from "../../assets/editing.jpg";
-import gaming from "../../assets/gaming.jpg";
-import vfx from "../../assets/vfx.jpg";
 import ReactPlayer from "react-player";
+import { newServices } from "../constant/home";
+import { OtherHouses } from "@mui/icons-material";
+
+const Container = styled("div")({
+  "& h1": {
+    marginBottom: 30,
+    fontSize: 36,
+    textAlign: "center",
+  },
+  ".videoContainer": {
+    maxWidth: 800,
+    width: "40%",
+    margin: "0 auto",
+    boxShadow: "rgba(99, 99, 99, 0.2) 0px 2px 8px 0px",
+    borderRadius: 20,
+    marginBottom: 50,
+    background: "#ececec",
+    overflow: "hidden",
+    display: "flex",
+    flexDirection: "column",
+    alignItems: "center",
+    textAlign: "left",
+  },
+  ".playerWrapper": {
+    position: "relative",
+    width: "100%",
+  },
+  img: {
+    maxWidth: "100%",
+  },
+  ".react-player, .playerWrapper img": {
+    position: "absolute",
+    top: 0,
+    left: 0,
+    width: "100% !important",
+    height: "100% !important",
+    objectFit: "cover", // Ensures the image fills the space like a video
+  },
+  ".react-player": {
+    position: "absolute",
+    top: 0,
+    left: 0,
+    width: "100% !important",
+    height: "100% !important",
+  },
+  ".videoDetails": {
+    padding: 15,
+  },
+  "& h3": {
+    marginBottom: 10,
+    fontSize: 20,
+    fontWeight: "bold",
+  },
+  "& p": {
+    fontSize: 16,
+    color: "#555",
+  },
+  "@media screen and (max-width: 1024px)": {
+    ".videoContainer": {
+      width: "48%",
+    },
+  },
+  "@media screen and (max-width: 768px)": {
+    ".videoContainer": {
+      width: "100%",
+    },
+  },
+});
 
 const Services = () => {
-  const [screenWidth, setScreenWidth] = useState(window.innerWidth);
-
-  useEffect(() => {
-    const handleResize = () => {
-      setScreenWidth(window.innerWidth);
-    };
-
-    // Add event listener for window resize
-    window.addEventListener("resize", handleResize);
-
-    // Cleanup the event listener on component unmount
-    return () => {
-      window.removeEventListener("resize", handleResize);
-    };
-  }, []);
   return (
-    <>
-      <ServiceContainer>
-        <h2 className="title">Our Services</h2>
-        <div className="wrapper">
-          <ThreeD
-            contentId={"3dAnimation"}
-            title={"3D Animations"}
-            content={"Where Imagination Meets Precision"}
-            output={threeDOutput}
-          />
-          <ThreeD
-            contentId={"2dAnimation"}
-            title={"2D Animations"}
-            content={"Telling Stories Through 2D Motion"}
-            output={twoDOutput}
-            isLower
-          />
-          <ThreeD
-            title={"Digital Marketing & Advertisements"}
-            content={"Building Bridges Between You and Your Customers"}
-            contentId={"digitalMarketing"}
-            output={digimar}
-          />
-        </div>
-        <div className="wrapper">
-          <ThreeD
-            title={"Audio / Video Editing"}
-            content={"Transforming Raw Footage Into Art"}
-            contentId={"vfxEditing"}
-            output={editing}
-          />
-          <ThreeD
-            title={"Cinematic Advertisement"}
-            content={"Because Your Brand Deserves the Spotlight"}
-            contentId={"digitalMarketing"}
-            output={gaming}
-            isLower
-          />
-          <ThreeD
-            title={"Visual Effects"}
-            content={"Because Reality Isn’t Enough"}
-            contentId={"vfxEditing"}
-            output={vfx}
-          />
-        </div>
-        <h2 className="title">Show Reel</h2>
+    <Container id="services">
+      <div className="wrapper">
+        <h1>Services</h1>
         <div
-          className="wrapper"
           style={{
-            position: "relative",
+            display: "flex",
+            justifyContent: "space-between",
+            flexWrap: "wrap",
+            gap: 20,
           }}
         >
-          <div
-            style={{
-              width: "90%",
-              margin: "0 auto",
-              maxWidth: 1200,
-            }}
-          >
-            <ReactPlayer
-              url={"https://vimeo.com/1042734577?share=copy"}
-              playing={false}
-              controls={true}
-              muted={true}
-              loop={true}
-              width="100%"
-              height={
-                screenWidth > 1200
-                  ? "800px"
-                  : screenWidth > 800
-                  ? "500px"
-                  : screenWidth > 600
-                  ? "300px"
-                  : "250px"
-              }
-            />
-
-            {/* {playVideo ? (
-              <video
-                controls
-                src={twodVideo}
-                style={{ width: "100%" }}
-                onPause={() => setPlayVideo(false)}
-              />
-            ) : (
-              <>
-                <img
-                  src={collation}
-                  style={{
-                    width: "100%",
-                    objectFit: "cover",
-                  }}
-                />
-                <IconButton
-                  style={{
-                    position: "absolute",
-                    top: "50%",
-                    left: "50%",
-                    transform: "translate(-50%, -50%)",
-                    width: 70,
-                    height: 70,
-                    borderRadius: "50%",
-                    background: "#fff",
-                  }}
-                  onClick={() => setPlayVideo(true)}
-                >
-                  <PlayArrowIcon />
-                </IconButton>
-              </>
-            )} */}
-          </div>
+          {newServices.map((item, index) => (
+            <div key={index} className="videoContainer" id={item.id}>
+              <div
+                className="playerWrapper"
+                style={{
+                  paddingTop: "56.25%",
+                }}
+              >
+                {item.imgUrl ? (
+                  <img src={item.imgUrl} />
+                ) : (
+                  <ReactPlayer
+                    className="react-player"
+                    url={item.url}
+                    playing={false}
+                    controls={true}
+                    muted={true}
+                    loop={true}
+                    width="100%"
+                    height="100%"
+                  />
+                )}
+              </div>
+              <div className="videoDetails">
+                <h3>{item.title}</h3>
+                <p>{item.subtitle}</p>
+              </div>
+            </div>
+          ))}
         </div>
-      </ServiceContainer>
-    </>
+      </div>
+    </Container>
   );
 };
 

@@ -5,7 +5,6 @@ import MenuIcon from "@mui/icons-material/Menu";
 import { navItems } from "../constant/home";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import { List, Popper } from "@mui/material";
-import { useNavigate } from "react-router-dom";
 import { TransitionGroup } from "react-transition-group";
 import AppDrawer from "./test";
 
@@ -14,7 +13,6 @@ const Navbar = () => {
   const [menuOpen, setMenuOpen] = useState(false);
   const [anchorEl, setAnchorEl] = useState(null);
   const [subMenu, setSubMenu] = useState([]);
-  const navigate = useNavigate();
   return (
     <>
       <Navcontainer className="navbar">
@@ -32,7 +30,6 @@ const Navbar = () => {
               cursor: "pointer",
             }}
             alt="trilandStudioLogo"
-            onClick={() => navigate("/")}
           />
           <nav>
             <ul>
@@ -47,16 +44,7 @@ const Navbar = () => {
                   }}
                   onMouseLeave={() => setMenuOpen(false)}
                 >
-                  <a
-                    href={`#${item.id}`}
-                    onClick={() => {
-                      if (item.navigate) {
-                        navigate(item.navigate);
-                      }
-                    }}
-                  >
-                    {item.name}
-                  </a>
+                  <a href={`#${item.id}`}>{item.name}</a>
                   {!!item?.sub?.length && <ExpandMoreIcon />}
                 </li>
               ))}
@@ -84,17 +72,7 @@ const Navbar = () => {
           <div className="container">
             {subMenu?.map((value) => (
               <li style={{ paddingBlock: 10 }}>
-                <a
-                  href={`#${value.id}`}
-                  onClick={() => {
-                    console.log(value);
-                    if (value.navigate) {
-                      navigate(value.navigate);
-                    }
-                  }}
-                >
-                  {value.name}
-                </a>
+                <a href={`#${value.id}`}>{value.name}</a>
               </li>
             ))}
           </div>
