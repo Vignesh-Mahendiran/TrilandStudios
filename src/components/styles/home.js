@@ -489,8 +489,8 @@ export const StyledModal = styled("div")({
   top: "50%",
   left: "50%",
   transform: "translate(-50%, -50%)",
-  maxWidth: 1200,
-  width: "90%",
+  width: "100vw",
+  height: "100vh",
   outline: 0,
-  height: 500,
+  svg: { color: "#fff", fontSize: 30 },
 });

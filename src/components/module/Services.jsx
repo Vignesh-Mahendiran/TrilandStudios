@@ -1,12 +1,14 @@
-import { styled } from "@mui/material";
-import React, { useState, useRef } from "react";
+import { IconButton, Modal, styled } from "@mui/material";
+import React, { useState, useRef, useEffect } from "react";
 import ReactPlayer from "react-player";
 import { newServices } from "../constant/home";
 import PlayArrowIcon from "@mui/icons-material/PlayArrow";
 import PauseIcon from "@mui/icons-material/Pause";
 import VolumeOffIcon from "@mui/icons-material/VolumeOff";
 import VolumeUpIcon from "@mui/icons-material/VolumeUp";
-
+import FullscreenIcon from "@mui/icons-material/Fullscreen";
+import { StyledModal } from "../styles/home";
+import CloseIcon from "@mui/icons-material/Close";
 const Container = styled("div")({
   "& h1": {
     marginBottom: 30,
@@ -32,6 +34,7 @@ const Container = styled("div")({
     position: "relative",
     width: "100%",
     paddingTop: "56.25%", // 16:9 Aspect Ratio
+    img: { maxWidth: "100%", height: "100%" },
   },
   ".controlButton": {
     position: "absolute",
@@ -73,6 +76,9 @@ const Container = styled("div")({
   },
   ".videoContainer:hover .soundButton": {
     opacity: 1, // Show sound button on hover
+  },
+  ".fullscreenButton": {
+    right: "60px",
   },
   ".hidden": {
     opacity: 0,
@@ -116,7 +122,7 @@ const Services = () => {
   const [playingVideos, setPlayingVideos] = useState({});
   const [mutedVideos, setMutedVideos] = useState({});
   const videoRefs = useRef({});
-
+  const [fullScreenVideo, setFullScreenVideo] = useState(null);
   const togglePlayPause = (url) => {
     setPlayingVideos(url);
   };
@@ -131,69 +137,142 @@ const Services = () => {
     }
     setPlayingVideos((prev) => ({ ...prev, [index]: false })); // Pause the video
   };
+  const setFullScreen = (url) => {
+    setFullScreenVideo(url);
+  };
 
+  useEffect(() => {
+    setPlayingVideos({});
+  }, [fullScreenVideo]);
   return (
-    <Container id="services">
-      <div className="wrapper">
-        <h1>Services</h1>
-        <div
-          style={{
-            display: "flex",
-            justifyContent: "space-between",
-            flexWrap: "wrap",
-            gap: 20,
-          }}
-        >
-          {newServices.map((item, index) => (
-            <div key={index} className="videoContainer" id={item.id}>
-              <div className="playerWrapper">
-                <ReactPlayer
-                  ref={(player) => (videoRefs.current[index] = player)}
-                  className="react-player"
-                  url={`${item.url}`}
-                  playing={playingVideos === item.url || false}
-                  muted={mutedVideos === item.url || false}
-                  controls={false}
-                  width="100%"
-                  height="100%"
-                  onEnded={() => handleVideoEnd(index)} // Reset when finished
-                />
-                <div
-                  className={`controlButton ${
-                    playingVideos[index] ? "hidden" : ""
-                  }`}
-                  onClick={() =>
-                    togglePlayPause(item.url === playingVideos ? "" : item.url)
-                  }
-                >
-                  {playingVideos === item.url ? (
-                    <PauseIcon fontSize="large" />
+    <>
+      <Container id="services">
+        <div className="wrapper">
+          <h1>Services</h1>
+          <div
+            style={{
+              display: "flex",
+              justifyContent: "space-between",
+              flexWrap: "wrap",
+              gap: 20,
+            }}
+          >
+            {newServices.map((item, index) => (
+              <div key={index} className="videoContainer" id={item.id}>
+                <div className="playerWrapper">
+                  {item.imgUrl ? (
+                    <img
+                      src={item.imgUrl}
+                      style={
+                        item.imgUrl
+                          ? {
+                              left: "0",
+                              position: "absolute",
+                              top: "0",
+                              width: "100%",
+                            }
+                          : {}
+                      }
+                      alt={item.title}
+                    />
                   ) : (
-                    <PlayArrowIcon fontSize="large" />
+                    <>
+                      <ReactPlayer
+                        ref={(player) => (videoRefs.current[index] = player)}
+                        className="react-player"
+                        url={`${item.url}`}
+                        playing={playingVideos === item.url || false}
+                        muted={mutedVideos === item.url || false}
+                        controls={false}
+                        width="100%"
+                        height="100%"
+                        onEnded={() => handleVideoEnd(index)} // Reset when finished
+                      />
+                      <div
+                        className={`controlButton ${
+                          playingVideos[index] ? "hidden" : ""
+                        }`}
+                        onClick={() =>
+                          togglePlayPause(
+                            item.url === playingVideos ? "" : item.url
+                          )
+                        }
+                      >
+                        {playingVideos === item.url ? (
+                          <PauseIcon fontSize="large" />
+                        ) : (
+                          <PlayArrowIcon fontSize="large" />
+                        )}
+                      </div>
+                      <div
+                        className="soundButton"
+                        onClick={() =>
+                          toggleMute(item.url === mutedVideos ? "" : item.url)
+                        }
+                      >
+                        {mutedVideos === item.url ? (
+                          <VolumeOffIcon fontSize="small" />
+                        ) : (
+                          <VolumeUpIcon fontSize="small" />
+                        )}
+                      </div>
+                      <div
+                        className="soundButton fullscreenButton"
+                        onClick={() => setFullScreen(item.url)}
+                      >
+                        <FullscreenIcon fontSize="small" />
+                      </div>
+                    </>
                   )}
                 </div>
-                <div
-                  className="soundButton"
-                  onClick={() =>
-                    toggleMute(item.url === mutedVideos ? "" : item.url)
-                  }
-                >
-                  {mutedVideos === item.url ? (
-                    <VolumeOffIcon fontSize="small" />
-                  ) : (
-                    <VolumeUpIcon fontSize="small" />
-                  )}
+                <div className="videoDetails">
+                  <h3>{item.title}</h3>
+                  <p>{item.subtitle}</p>
                 </div>
               </div>
-              <div className="videoDetails">
-                <h3>{item.title}</h3>
-                <p>{item.subtitle}</p>
-              </div>
-            </div>
-          ))}
+            ))}
+          </div>
         </div>
-      </div>
-    </Container>
+      </Container>
+      <Modal open={!!fullScreenVideo} onClose={() => setFullScreenVideo(null)}>
+        <StyledModal>
+          <div
+            style={{
+              position: "absolute",
+              top: "50%",
+              left: "50%",
+              width: "100%",
+              height: "500px",
+              transform: "translate(-50%, -50%)",
+            }}
+          >
+            <ReactPlayer
+              url={fullScreenVideo}
+              playing={true}
+              controls={true}
+              muted={true}
+              loop={true}
+              width="100%"
+              height={"500px"}
+            />
+          </div>
+          <IconButton
+            onClick={() => setFullScreenVideo(null)}
+            style={{
+              position: "absolute",
+              top: 10,
+              right: 10,
+              background: "rgba(0, 0, 0, 1)",
+              height: 30,
+              width: 30,
+              padding: 10,
+            }}
+          >
+            <CloseIcon />
+          </IconButton>
+        </StyledModal>
+      </Modal>
+    </>
   );
 };
 
