@@ -17,8 +17,8 @@ const Home = () => {
         <Banner />
       </BannerContainer>
       <AboutUs />
-      <HireArtist />
       <Services />
+      <HireArtist />
       <TopNotch />
       <Footer />
     </div>
